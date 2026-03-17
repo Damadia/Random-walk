@@ -1,0 +1,129 @@
+[gd_scene load_steps=8 format=3 uid="uid://ci2xp5twsitmg"]
+
+[ext_resource type="Theme" uid="uid://b04i3w5aemohi" path="res://resources/secundary.tres" id="1_421t1"]
+[ext_resource type="Texture2D" uid="uid://blepui25n6xtg" path="res://assets/GFX/meadow.png" id="1_qn66l"]
+[ext_resource type="Theme" uid="uid://bj0s6vu2berl6" path="res://resources/primary.tres" id="2_2mrw7"]
+[ext_resource type="Script" uid="uid://vigb2qmq7rob" path="res://scripts/check_values_setting.gd" id="3_c550q"]
+[ext_resource type="Script" uid="uid://co1v6388odff1" path="res://scripts/draw_line.gd" id="3_y0neg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2mrw7"]
+bg_color = Color(0.141176, 0.141176, 0.141176, 0.392157)
+
+[sub_resource type="Theme" id="Theme_y0neg"]
+Panel/styles/panel = SubResource("StyleBoxFlat_2mrw7")
+
+[node name="Hive" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -5501.0
+offset_right = 6016.0
+offset_bottom = 1075.0
+texture = ExtResource("1_qn66l")
+stretch_mode = 6
+
+[node name="longLine" type="Line2D" parent="."]
+script = ExtResource("3_y0neg")
+
+[node name="Settings" type="Panel" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme = SubResource("Theme_y0neg")
+
+[node name="Config_manager" type="Node" parent="Settings" node_paths=PackedStringArray("amountBees", "amountSteps", "pPosibility", "qPosibility")]
+script = ExtResource("3_c550q")
+amountBees = NodePath("../VBoxContainer/HBoxContainer1/TextEdit")
+amountSteps = NodePath("../VBoxContainer/HBoxContainer4/TextEdit")
+pPosibility = NodePath("../VBoxContainer/HBoxContainer2/TextEdit")
+qPosibility = NodePath("../VBoxContainer/HBoxContainer3/TextEdit")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -866.0
+offset_right = 866.0
+offset_bottom = 102.0
+grow_horizontal = 2
+theme_override_constants/separation = 50
+
+[node name="HBoxContainer1" type="HBoxContainer" parent="Settings/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 600
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("1_421t1")
+text = "Cantidad de abejas"
+
+[node name="TextEdit" type="TextEdit" parent="Settings/VBoxContainer/HBoxContainer1"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+theme = ExtResource("1_421t1")
+placeholder_text = "Número > 0"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Settings/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 600
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("1_421t1")
+text = "Número de pasos"
+
+[node name="TextEdit" type="TextEdit" parent="Settings/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+theme = ExtResource("1_421t1")
+placeholder_text = "Número > 0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Settings/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 600
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("1_421t1")
+text = "Probabilidad p"
+
+[node name="TextEdit" type="TextEdit" parent="Settings/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+theme = ExtResource("1_421t1")
+placeholder_text = "0 <= p <= 1 "
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Settings/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 600
+
+[node name="Label" type="Label" parent="Settings/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+theme = ExtResource("1_421t1")
+text = "Probabilidad q"
+
+[node name="TextEdit" type="TextEdit" parent="Settings/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+theme = ExtResource("1_421t1")
+text = "1 - p = "
+editable = false
+
+[node name="Button" type="Button" parent="Settings/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_2mrw7")
+text = "Ejecutar"
+
+[connection signal="text_changed" from="Settings/VBoxContainer/HBoxContainer1/TextEdit" to="Settings/Config_manager" method="_on_text_edit_text_changed"]

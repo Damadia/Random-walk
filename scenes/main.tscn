@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://cis8w2omec8tx"]
+
+[ext_resource type="Texture2D" uid="uid://m7l6syjb4w75" path="res://assets/GFX/panal.jpg" id="1_sugp2"]
+[ext_resource type="Theme" uid="uid://bj0s6vu2berl6" path="res://resources/primary.tres" id="2_jyhfs"]
+[ext_resource type="Script" uid="uid://bhtk8yqnbrm2a" path="res://scripts/changeToProgram.gd" id="3_tbgi4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_itxqv"]
+bg_color = Color(0.141176, 0.141176, 0.141176, 0.392157)
+
+[node name="Node2D" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1000, 1000)
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_sugp2")
+expand_mode = 3
+
+[node name="FilterBlack" type="Panel" parent="TextureRect"]
+layout_mode = 0
+offset_right = 2098.0
+offset_bottom = 1146.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_itxqv")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_left = 639.0
+offset_top = 2.0
+offset_right = 1449.0
+offset_bottom = 260.0
+theme = ExtResource("2_jyhfs")
+text = "Random walk "
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+offset_left = 718.0
+offset_top = 804.0
+offset_right = 1308.0
+offset_bottom = 933.0
+size_flags_horizontal = 3
+theme = ExtResource("2_jyhfs")
+text = "Comenzar programa"
+script = ExtResource("3_tbgi4")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

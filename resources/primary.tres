@@ -1,0 +1,41 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bj0s6vu2berl6"]
+
+[ext_resource type="FontFile" uid="uid://c7exco3i0k3b4" path="res://assets/fonts/BalooBhaina-Regular.ttf" id="1_5kehm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5kehm"]
+bg_color = Color(0.00623787, 0.058862, 0.0968559, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+expand_margin_left = 40.0
+expand_margin_top = 10.0
+expand_margin_right = 40.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7vx0l"]
+bg_color = Color(0.141176, 0.141176, 0.141176, 1)
+border_width_top = 3
+border_color = Color(0.393085, 0.393086, 0.393085, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 10
+expand_margin_left = 40.0
+expand_margin_top = 10.0
+expand_margin_right = 40.0
+expand_margin_bottom = 10.0
+
+[resource]
+Button/colors/font_color = Color(1, 0.854902, 0.537255, 1)
+Button/colors/font_hover_color = Color(1, 0.912545, 0.726341, 1)
+Button/font_sizes/font_size = 50
+Button/fonts/font = ExtResource("1_5kehm")
+Button/styles/hover = SubResource("StyleBoxFlat_5kehm")
+Button/styles/normal = SubResource("StyleBoxFlat_7vx0l")
+Label/colors/font_color = Color(1, 0.85569, 0.536671, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 20
+Label/font_sizes/font_size = 128
+Label/fonts/font = ExtResource("1_5kehm")
