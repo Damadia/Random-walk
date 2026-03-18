@@ -1,0 +1,91 @@
+[gd_scene load_steps=13 format=3 uid="uid://dxuld4u41s4q0"]
+
+[ext_resource type="Texture2D" uid="uid://52rmk882sph1" path="res://assets/GFX/Bumble Bee Sprite Sheet.png" id="1_14gr3"]
+[ext_resource type="Script" uid="uid://c1a0dl7x0dkxw" path="res://scripts/bee.gd" id="1_utdqt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14gr3"]
+atlas = ExtResource("1_14gr3")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4gxr"]
+atlas = ExtResource("1_14gr3")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhjli"]
+atlas = ExtResource("1_14gr3")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7oia"]
+atlas = ExtResource("1_14gr3")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utdqt"]
+atlas = ExtResource("1_14gr3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igmx1"]
+atlas = ExtResource("1_14gr3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1whxm"]
+atlas = ExtResource("1_14gr3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmybc"]
+atlas = ExtResource("1_14gr3")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h4gxr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14gr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4gxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhjli")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7oia")
+}],
+"loop": true,
+"name": &"fly_B",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utdqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_igmx1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1whxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmybc")
+}],
+"loop": true,
+"name": &"fly_F",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xhjli"]
+size = Vector2(32, 36.375)
+
+[node name="Node2D" type="CharacterBody2D"]
+script = ExtResource("1_utdqt")
+
+[node name="Animations" type="AnimatedSprite2D" parent="."]
+scale = Vector2(5.5, 5.5)
+sprite_frames = SubResource("SpriteFrames_h4gxr")
+animation = &"fly_B"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(4, -6)
+shape = SubResource("RectangleShape2D_xhjli")
+
+[node name="step" type="Timer" parent="."]
