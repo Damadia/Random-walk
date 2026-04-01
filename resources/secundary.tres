@@ -1,8 +1,11 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b04i3w5aemohi"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://b04i3w5aemohi"]
 
 [ext_resource type="FontFile" uid="uid://c7exco3i0k3b4" path="res://assets/fonts/BalooBhaina-Regular.ttf" id="1_8v5s8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ihu7l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8v5s8"]
+bg_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
 
 [resource]
 Label/colors/font_color = Color(1, 0.854902, 0.537255, 1)
@@ -16,6 +19,10 @@ Label/constants/shadow_outline_size = 1
 Label/font_sizes/font_size = 50
 Label/fonts/font = ExtResource("1_8v5s8")
 Label/styles/normal = SubResource("StyleBoxEmpty_ihu7l")
+LineEdit/constants/caret_width = 6
+LineEdit/font_sizes/font_size = 32
+LineEdit/fonts/font = ExtResource("1_8v5s8")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_8v5s8")
 TextEdit/colors/font_color = Color(0.776471, 0.0431373, 0.164706, 1)
 TextEdit/colors/font_outline_color = Color(0, 0, 0, 1)
-TextEdit/font_sizes/font_size = 40
+TextEdit/font_sizes/font_size = 30

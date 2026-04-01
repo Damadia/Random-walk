@@ -1,36 +1,37 @@
-class_name bee extends Node
+class_name Bee
+extends CharacterBody2D
 
 enum states {LEFT, RIGHT}
 
 var beeEntity := self 
 
-var p : float
+var p : float : 
+	set(val):
+		p = clamp(val, 0.0, 1.0)
+		q = 1 - p 
 var q : float
 const directions := [-1, 1]
-const speed : float = 10 # 10 px/s = 1 m/s
+const speed : float = 50 # 10 px/s = 1 m/s
 
 var currentState
 var animations : AnimatedSprite2D
-var stepper : Timer
+@onready var stepper : Timer = $step
+@onready var VEL_PROPORTION : float = stepper.wait_time 
 
-
-func _init(probability: float) -> void:
-	p = clamp(probability, 0.0, 1.0)
-	q = 1 - p
 	
 
 func _ready() -> void:
 	currentState = states.LEFT
 	animations = $Animations
-	stepper = $step
 	stepper.timeout.connect(on_step_end)
+	animations.play("fly_B")
 	start_state()
 	
 func _process(delta: float) -> void:
 	if (currentState == states.LEFT):
-		self.velocity.x = speed * delta * directions[0]
+		self.position.x += (speed * delta * directions[0])/VEL_PROPORTION
 	if (currentState == states.RIGHT):
-		self.velocity.x = speed * delta * directions[1]
+		self.position.x += (speed * delta * directions[1])/VEL_PROPORTION
 		
 	
 	
@@ -38,11 +39,11 @@ func start_state():
 	if (currentState == states.LEFT):
 		animations.stop()
 		animations.play("fly_B")
-		stepper.start(0)
+		stepper.start()
 	if (currentState == states.RIGHT):
 		animations.stop()
 		animations.play("fly_F")
-		stepper.start(0)
+		stepper.start()
 		
 
 func exit_state():

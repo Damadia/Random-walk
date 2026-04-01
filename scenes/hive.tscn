@@ -1,13 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://ci2xp5twsitmg"]
+[gd_scene load_steps=9 format=3 uid="uid://ci2xp5twsitmg"]
 
 [ext_resource type="Theme" uid="uid://b04i3w5aemohi" path="res://resources/secundary.tres" id="1_421t1"]
 [ext_resource type="Texture2D" uid="uid://blepui25n6xtg" path="res://assets/GFX/meadow.png" id="1_qn66l"]
 [ext_resource type="Theme" uid="uid://bj0s6vu2berl6" path="res://resources/primary.tres" id="2_2mrw7"]
 [ext_resource type="Script" uid="uid://vigb2qmq7rob" path="res://scripts/check_values_setting.gd" id="3_c550q"]
 [ext_resource type="Script" uid="uid://co1v6388odff1" path="res://scripts/draw_line.gd" id="3_y0neg"]
+[ext_resource type="PackedScene" uid="uid://damyxdyt1riox" path="res://actors/panal.tscn" id="6_xgw1h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2mrw7"]
-bg_color = Color(0.141176, 0.141176, 0.141176, 0.392157)
+bg_color = Color(0.666667, 0.219608, 0.168627, 0.388235)
 
 [sub_resource type="Theme" id="Theme_y0neg"]
 Panel/styles/panel = SubResource("StyleBoxFlat_2mrw7")
@@ -16,8 +17,9 @@ Panel/styles/panel = SubResource("StyleBoxFlat_2mrw7")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -5501.0
+offset_top = -1585.0
 offset_right = 6016.0
-offset_bottom = 1075.0
+offset_bottom = 2171.0
 texture = ExtResource("1_qn66l")
 stretch_mode = 6
 
@@ -29,12 +31,13 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 theme = SubResource("Theme_y0neg")
 
-[node name="Config_manager" type="Node" parent="Settings" node_paths=PackedStringArray("amountBees", "amountSteps", "pPosibility", "qPosibility")]
+[node name="Config_manager" type="Node" parent="Settings" node_paths=PackedStringArray("amountBees", "amountSteps", "pPosibility", "qPosibility", "startBtn")]
 script = ExtResource("3_c550q")
 amountBees = NodePath("../VBoxContainer/HBoxContainer1/TextEdit")
 amountSteps = NodePath("../VBoxContainer/HBoxContainer4/TextEdit")
 pPosibility = NodePath("../VBoxContainer/HBoxContainer2/TextEdit")
 qPosibility = NodePath("../VBoxContainer/HBoxContainer3/TextEdit")
+startBtn = NodePath("../VBoxContainer/Start")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Settings"]
 layout_mode = 1
@@ -59,7 +62,7 @@ size_flags_horizontal = 6
 theme = ExtResource("1_421t1")
 text = "Cantidad de abejas"
 
-[node name="TextEdit" type="TextEdit" parent="Settings/VBoxContainer/HBoxContainer1"]
+[node name="TextEdit" type="LineEdit" parent="Settings/VBoxContainer/HBoxContainer1"]
 custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
 theme = ExtResource("1_421t1")
@@ -77,7 +80,7 @@ size_flags_horizontal = 6
 theme = ExtResource("1_421t1")
 text = "Número de pasos"
 
-[node name="TextEdit" type="TextEdit" parent="Settings/VBoxContainer/HBoxContainer4"]
+[node name="TextEdit" type="LineEdit" parent="Settings/VBoxContainer/HBoxContainer4"]
 custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
 theme = ExtResource("1_421t1")
@@ -95,7 +98,7 @@ size_flags_horizontal = 6
 theme = ExtResource("1_421t1")
 text = "Probabilidad p"
 
-[node name="TextEdit" type="TextEdit" parent="Settings/VBoxContainer/HBoxContainer2"]
+[node name="TextEdit" type="LineEdit" parent="Settings/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
 theme = ExtResource("1_421t1")
@@ -113,17 +116,23 @@ size_flags_horizontal = 6
 theme = ExtResource("1_421t1")
 text = "Probabilidad q"
 
-[node name="TextEdit" type="TextEdit" parent="Settings/VBoxContainer/HBoxContainer3"]
+[node name="TextEdit" type="LineEdit" parent="Settings/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
 theme = ExtResource("1_421t1")
 text = "1 - p = "
 editable = false
 
-[node name="Button" type="Button" parent="Settings/VBoxContainer"]
+[node name="Start" type="Button" parent="Settings/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_2mrw7")
+disabled = true
 text = "Ejecutar"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(960, 540)
+
+[node name="Panal" parent="." instance=ExtResource("6_xgw1h")]
 
 [connection signal="text_changed" from="Settings/VBoxContainer/HBoxContainer1/TextEdit" to="Settings/Config_manager" method="_on_text_edit_text_changed"]
