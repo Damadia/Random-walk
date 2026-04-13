@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bpgp2p15w7phr"]
+
+[ext_resource type="FontFile" uid="uid://c7exco3i0k3b4" path="res://assets/fonts/BalooBhaina-Regular.ttf" id="1_8ujo1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bsmbx"]
+content_margin_left = 50.0
+content_margin_top = 20.0
+content_margin_right = 50.0
+content_margin_bottom = 20.0
+
+[resource]
+Label/colors/font_color = Color(1, 0.854902, 0.537255, 0)
+Label/colors/font_outline_color = Color(0.141176, 0.141176, 0.141176, 0)
+Label/constants/outline_size = 10
+Label/font_sizes/font_size = 44
+Label/fonts/font = ExtResource("1_8ujo1")
+Label/styles/normal = SubResource("StyleBoxEmpty_bsmbx")

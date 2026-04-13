@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://eoi6tt67wr43"]
+[gd_scene load_steps=17 format=3 uid="uid://eoi6tt67wr43"]
 
 [ext_resource type="Texture2D" uid="uid://52rmk882sph1" path="res://assets/GFX/Bumble Bee Sprite Sheet.png" id="1_14gr3"]
-[ext_resource type="Script" uid="uid://c1a0dl7x0dkxw" path="res://scripts/bee.gd" id="1_utdqt"]
+[ext_resource type="Script" uid="uid://c1a0dl7x0dkxw" path="res://scripts/classes/bee.gd" id="1_utdqt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_14gr3"]
 atlas = ExtResource("1_14gr3")
@@ -35,6 +35,22 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("1_14gr3")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kat56"]
+atlas = ExtResource("1_14gr3")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxw53"]
+atlas = ExtResource("1_14gr3")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcf6h"]
+atlas = ExtResource("1_14gr3")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8d3t6"]
+atlas = ExtResource("1_14gr3")
+region = Rect2(96, 96, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_utdqt"]
 animations = [{
 "frames": [{
@@ -52,7 +68,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"fly_B",
-"speed": 12.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -69,7 +85,24 @@ animations = [{
 }],
 "loop": true,
 "name": &"fly_F",
-"speed": 12.0
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kat56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxw53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kcf6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8d3t6")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_igmx1"]
@@ -82,7 +115,8 @@ metadata/_custom_type_script = "uid://c1a0dl7x0dkxw"
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 scale = Vector2(12, 12)
 sprite_frames = SubResource("SpriteFrames_utdqt")
-animation = &"fly_F"
+animation = &"idle"
+frame_progress = 0.666092
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

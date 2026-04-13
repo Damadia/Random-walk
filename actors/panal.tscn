@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://damyxdyt1riox"]
 
-[ext_resource type="Script" uid="uid://ds5sygh2kr48n" path="res://scripts/panal.gd" id="1_2qyat"]
+[ext_resource type="Script" uid="uid://ds5sygh2kr48n" path="res://scripts/classes/panal.gd" id="1_2qyat"]
 
 [node name="Panal" type="Node"]
 script = ExtResource("1_2qyat")
